@@ -6,11 +6,11 @@ public:
         {
             if(isalpha(ch))
             {
-            ch=tolower(ch);
+            ch=tolower(ch);//if char cange to lowecase 
             }
             else
             {
-                ch=' ';
+                ch=' ';//punctuation na space replace pananum
             }
         }
         unordered_map<string,int>freq;
@@ -20,7 +20,7 @@ public:
         {
             if(!bannedset.count(word))
             {
-                freq[word]++;
+                freq[word]++;//only non-banned oda freqcount
             }
         }
         int maxcount=0;
