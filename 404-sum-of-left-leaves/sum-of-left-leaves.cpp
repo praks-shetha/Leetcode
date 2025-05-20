@@ -12,23 +12,22 @@
 class Solution {
 public:
     int sumOfLeftLeaves(TreeNode* root) {
-        if(root==NULL)return 0;
-        stack<TreeNode*>s;
-        int sum=0;
-        s.push(root);
-        while(!s.empty())
+       if(root==NULL)return 0;
+       queue<TreeNode*>q;
+       int sum=0;
+       q.push(root);
+       while(!q.empty())
+       {
+        TreeNode* curr=q.front();
+        q.pop();
+        if(curr->left &&! curr->left->left && !curr->left->right)
         {
-           TreeNode* node=s.top();
-           s.pop();
-           if(node->left && !node->left->left && !node->left->right)
-           {
-            sum+=node->left->val;
-           }
-           if(node->right)s.push(node->right);
-           if(node->left)s.push(node->left);
-           
+            sum+=curr->left->val;
         }
-        return sum;
+        if(curr->left)q.push(curr->left);
+        if(curr->right)q.push(curr->right);
+       }
+return sum;
 
 
     }
